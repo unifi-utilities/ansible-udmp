@@ -1,0 +1,31 @@
+---
+
+- name: onboot - query package version
+  register: onboot_version
+  raw: "{{ unifi_os_cmd }} dpkg-query --showformat='${Version}' --show udm-boot"
+
+- name: onboot - download package
+  when: onboot_version.stdout != udm_boot_version
+  raw: curl -L "{{ unifi_onboot_download_uri }}" -o "{{ unifi_mount_path }}/unifi-os/udm-boot-{{ udm_boot_version }}.deb"
+
+- name: onboot - install package
+  when: onboot_version.stdout != udm_boot_version
+  raw: "{{ unifi_os_cmd }} dpkg -i {{ unifi_os_mount_path }}/udm-boot-{{ udm_boot_version }}.deb"
+
+- name: onboot - ensure onboot directory exists
+  raw: mkdir -p "{{ unifi_onboot_directory }}"
+
+- name: onboot - deploy custom configurations
+  delegate_to: localhost
+  become: no
+  with_items:
+    - { file: "files/00-onboot-sshkeys.sh", enabled: yes }
+    - { file: "files/05-onboot-container.sh", enabled: yes }
+    - { file: "files/10-onboot-frr.sh", enabled: yes }
+    - { file: "files/10-onboot-openvpn.sh", enabled: "{{ openvpn_enabled | bool }}"  }
+    - { file: "files/10-onboot-zerotier.sh", enabled: "{{ zerotier_enabled | bool }}" }
+  shell:
+    cmd: "[ '{{ item.enabled }}' = 'True' ] && scp {{ role_path }}/{{ item.file }} {{ inventory_hostname }}:{{ unifi_onboot_directory }}/ || echo 'item disabled: {{ item.file }}'"
+
+- name: onboot - enable executable flag on configurations
+  raw: chmod +x {{ unifi_onboot_directory }}/*.sh

@@ -1,0 +1,17 @@
+---
+galaxy_info:
+  author: Martin Buchleitner
+  description: Update Ubiquiti UDM (pro) Configuration with custom startup scripts and certificates
+  company: Martin Buchleitner
+  license: BSD
+  min_ansible_version: 2.5
+
+
+
+  galaxy_tags:
+    - ubiquiti
+    - udmpro
+    - udm
+    - udm-utilities
+
+dependencies: []

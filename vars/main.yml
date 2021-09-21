@@ -1,0 +1,10 @@
+---
+
+unifi_mount_path: "/mnt/data"
+unifi_os_mount_path: "/data"
+
+unifi_os_container: "unifi-os"
+
+unifi_onboot_directory: "{{ unifi_mount_path }}/on_boot.d/"
+
+unifi_os_cmd: podman exec -it "{{ unifi_os_container }}"

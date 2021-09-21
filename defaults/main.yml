@@ -1,0 +1,11 @@
+---
+
+unifi_certificate_path: "{{ unifi_mount_path }}/unifi-os/unifi-core/config"
+unifi_os_certificate_path: "{{ unifi_os_mount_path }}/unifi-core/config"
+
+java_certificate_import: "java -jar /usr/lib/unifi/lib/ace.jar import_key_cert"
+
+openvpn_enabled: no
+zerotier_enabled: no
+
+udm_boot_version: 1.0.4

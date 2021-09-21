@@ -1,0 +1,8 @@
+---
+
+- name: user defined certificate
+  include_tasks: certificate.yml
+  when: certificate is defined
+
+- name: deploy onboot
+  include_tasks: onboot.yml
