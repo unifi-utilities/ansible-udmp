@@ -1,7 +1,7 @@
 #!/usr/bin/env sh
 
 DEBUG=${DEBUG:--d}
-CONTAINER_NAME="{{ vpn_container_name }}"
+CONTAINER_NAME="openvpn"
 
 
 if podman container exists ${CONTAINER_NAME}; then

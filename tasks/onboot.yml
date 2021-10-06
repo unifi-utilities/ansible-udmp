@@ -25,7 +25,9 @@
     - { file: "files/10-onboot-openvpn.sh", enabled: "{{ openvpn_enabled | bool }}"  }
     - { file: "files/10-onboot-zerotier.sh", enabled: "{{ zerotier_enabled | bool }}" }
   shell:
-    cmd: "[ '{{ item.enabled }}' = 'True' ] && scp {{ role_path }}/{{ item.file }} {{ inventory_hostname }}:{{ unifi_onboot_directory }}/ || echo 'item disabled: {{ item.file }}'"
+    cmd: "[ '{{ item.enabled }}' = 'True' ] \
+            && scp {{ role_path }}/{{ item.file }} {{ inventory_hostname }}:{{ unifi_onboot_directory }}/ \
+            || echo 'item disabled: {{ item.file }}'"
 
 - name: onboot - enable executable flag on configurations
   raw: chmod +x {{ unifi_onboot_directory }}/*.sh

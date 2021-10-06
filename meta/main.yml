@@ -6,7 +6,8 @@ galaxy_info:
   license: BSD
   min_ansible_version: 2.5
 
-
+  platforms:
+    - unifi
 
   galaxy_tags:
     - ubiquiti
