@@ -11,7 +11,6 @@ podman run --mount="type=bind,source=/mnt/data/$CONTAINER_NAME,destination=/etc/
             --name "$CONTAINER_NAME" \
             --network=host \
             --privileged \
-            --name $CONTAINER_NAME \
             --restart always \
             $DEBUG \
             docker.io/frrouting/frr:v7.5.1

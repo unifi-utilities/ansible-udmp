@@ -13,7 +13,6 @@ podman run --mount="type=bind,source=/mnt/data/$CONTAINER_NAME,destination=/var/
             --name "$CONTAINER_NAME" \
             --network=host \
             -v /dev/net/tun:/dev/net/tun \
-            --name $CONTAINER_NAME \
             --cap-add=NET_ADMIN \
             --cap-add=SYS_ADMIN \
             --restart always \
