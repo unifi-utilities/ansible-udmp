@@ -1,13 +1,15 @@
 ---
 
+nodeexporter_enabled: yes
+frr_enabled: no
+rsyncd_enabled: no
+openvpn_enabled: no
+zerotier_enabled: no
+
 unifi_certificate_path: "{{ unifi_mount_path }}/unifi-os/unifi-core/config"
 unifi_os_certificate_path: "{{ unifi_os_mount_path }}/unifi-core/config"
 
 java_certificate_import: "java -jar /usr/lib/unifi/lib/ace.jar import_key_cert"
-
-openvpn_enabled: no
-zerotier_enabled: no
-nodeexporter_enabled: yes
 
 udm_onboot_version: 1.0.4
 udm_onboot_download_uri: "https://github.com/boostchicken/udm-utilities/releases/download/{{ udm_onboot_version }}/udm-boot_{{ udm_onboot_version }}_all.deb"
