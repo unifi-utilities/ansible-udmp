@@ -7,5 +7,7 @@ java_certificate_import: "java -jar /usr/lib/unifi/lib/ace.jar import_key_cert"
 
 openvpn_enabled: no
 zerotier_enabled: no
+nodeexporter_enabled: yes
 
-udm_boot_version: 1.0.4
+udm_onboot_version: 1.0.4
+udm_onboot_download_uri: "https://github.com/boostchicken/udm-utilities/releases/download/{{ udm_onboot_version }}/udm-boot_{{ udm_onboot_version }}_all.deb"
