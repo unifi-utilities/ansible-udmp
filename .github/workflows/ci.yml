@@ -13,13 +13,8 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
-    - name: Lint Ansible Playbook
-      uses: ansible/ansible-lint-action@master
-      with:
-        targets: ""
-        override-deps: |
-          ansible==2.9
-          ansible-lint==4.2.0
+      - name: Lint Ansible Playbook
+        uses: ansible/ansible-lint-action@master
   release:
     runs-on: ubuntu-latest
     needs: build
