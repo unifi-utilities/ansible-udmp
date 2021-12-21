@@ -1,3 +1,17 @@
+<a name="v1.0.3"></a>
+# [v1.0.3](https://github.com/mabunixda/ansible-udmp/releases/tag/v1.0.3) - 21 Dec 2021
+
+## 1.0.3 (2021-12-21)
+
+#### Bug Fixes
+
+* **scripts:** fixing scripts - avoid exit in the scripts (#6) (7e3cf1f9)
+
+
+
+[Changes][v1.0.3]
+
+
 <a name="v1.0.2"></a>
 # [v1.0.2](https://github.com/mabunixda/ansible-udmp/releases/tag/v1.0.2) - 21 Dec 2021
 
@@ -49,6 +63,7 @@
 [Changes][v1.0.0]
 
 
+[v1.0.3]: https://github.com/mabunixda/ansible-udmp/compare/v1.0.2...v1.0.3
 [v1.0.2]: https://github.com/mabunixda/ansible-udmp/compare/v1.0.1...v1.0.2
 [v1.0.1]: https://github.com/mabunixda/ansible-udmp/compare/v1.0.0...v1.0.1
 [v1.0.0]: https://github.com/mabunixda/ansible-udmp/tree/v1.0.0
