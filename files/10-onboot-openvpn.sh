@@ -6,10 +6,8 @@ CONTAINER_NAME="openvpn"
 
 if podman container exists ${CONTAINER_NAME}; then
   podman start ${CONTAINER_NAME}
-  exit 0
-fi
-
-podman run --name $CONTAINER_NAME \
+else
+  podman run --name $CONTAINER_NAME \
            --health-cmd=["pgrep","openvpn"] \
            --network=host \
            -v /dev/net/tun:/dev/net/tun \
@@ -18,3 +16,4 @@ podman run --name $CONTAINER_NAME \
            --restart=always \
            openvpn \
            ovpn_run /tmp/vpn/vpn_config.vpn
+fi

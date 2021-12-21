@@ -7,10 +7,8 @@ RSYNC_PORT="873"
 
 if podman container exists ${CONTAINER_NAME}; then
   podman start ${CONTAINER_NAME}
-  exit 0
-fi
-
-podman run --mount="type=bind,source=/mnt/,destination=/data/,ro" \
+else
+  podman run --mount="type=bind,source=/mnt/,destination=/data/,ro" \
            --mount="type=bind,source=/root/.ssh,destination=/root/.ssh/,ro" \
             --name "$CONTAINER_NAME" \
             --restart always \
@@ -18,3 +16,4 @@ podman run --mount="type=bind,source=/mnt/,destination=/data/,ro" \
             -p $RSYNC_PORT:873 \
             $DEBUG \
             docker.io/mabunixda/rsyncd
+fi
