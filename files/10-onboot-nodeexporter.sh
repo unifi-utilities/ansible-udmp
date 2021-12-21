@@ -6,10 +6,8 @@ CONTAINER_NAME="nodexporter"
 
 if podman container exists ${CONTAINER_NAME}; then
   podman start ${CONTAINER_NAME}
-  exit 0
-fi
-
-podman run  --name "$CONTAINER_NAME" \
+else
+  podman run  --name "$CONTAINER_NAME" \
             --network=host \
             --restart always \
             --pid="host" \
@@ -17,3 +15,4 @@ podman run  --name "$CONTAINER_NAME" \
             $DEBUG \
             quay.io/prometheus/node-exporter:latest \
             --path.rootfs=/host
+fi

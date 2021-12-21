@@ -4,4 +4,6 @@
 # Set a limit for container logs. 104857600 Bytes = 100 Megabytes
 sed -i 's/max_log_size = -1/max_log_size = 104857600/g' /etc/containers/libpod.conf;
 
-ip link add cni0 type bridge
+if ! ip link show cni0; then
+    ip link add cni0 type bridge || echo ""
+fi

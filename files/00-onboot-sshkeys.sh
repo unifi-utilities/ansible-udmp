@@ -15,16 +15,15 @@ done
 if [ ${KEYS_RC} -ne 0 ]
 then
     echo "Failed to load keys from config"
-    exit 1
+else
+    echo "${KEYS_DATA}" \
+        | sed 's/\"date\" : ISODate\(.*\),//' \
+        | jq -r '.x_ssh_keys | map([.type, .key, .comment] | join(" ")) | join("\n")' \
+        | while IFS= read -r KEY
+    do
+        if ! grep -Fxq "${KEY}" "${AUTHORIZED_KEYS}"
+        then
+            echo "${KEY}" >> "${AUTHORIZED_KEYS}"
+        fi
+    done
 fi
-
-echo "${KEYS_DATA}" \
-    | sed 's/\"date\" : ISODate\(.*\),//' \
-    | jq -r '.x_ssh_keys | map([.type, .key, .comment] | join(" ")) | join("\n")' \
-    | while IFS= read -r KEY
-do
-    if ! grep -Fxq "${KEY}" "${AUTHORIZED_KEYS}"
-    then
-        echo "${KEY}" >> "${AUTHORIZED_KEYS}"
-    fi
-done
