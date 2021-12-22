@@ -42,3 +42,4 @@
   template:
     src: cloudflare_config.json.j2
     dest: /mnt/data/cloudflare-ddns/config.json
+    mode: 0644
