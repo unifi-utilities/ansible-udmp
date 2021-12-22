@@ -1,3 +1,17 @@
+<a name="v1.0.4"></a>
+# [v1.0.4](https://github.com/mabunixda/ansible-udmp/releases/tag/v1.0.4) - 22 Dec 2021
+
+## 1.0.4 (2021-12-22)
+
+#### Bug Fixes
+
+* onboot installation reference breaks - fixxes #5 (#7) (d1ad89e3)
+
+
+
+[Changes][v1.0.4]
+
+
 <a name="v1.0.3"></a>
 # [v1.0.3](https://github.com/mabunixda/ansible-udmp/releases/tag/v1.0.3) - 21 Dec 2021
 
@@ -63,6 +77,7 @@
 [Changes][v1.0.0]
 
 
+[v1.0.4]: https://github.com/mabunixda/ansible-udmp/compare/v1.0.3...v1.0.4
 [v1.0.3]: https://github.com/mabunixda/ansible-udmp/compare/v1.0.2...v1.0.3
 [v1.0.2]: https://github.com/mabunixda/ansible-udmp/compare/v1.0.1...v1.0.2
 [v1.0.1]: https://github.com/mabunixda/ansible-udmp/compare/v1.0.0...v1.0.1
