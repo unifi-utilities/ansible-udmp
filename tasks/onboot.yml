@@ -8,7 +8,7 @@
   when: onboot_version is not defined or ( onboot_version.stdout is defined and onboot_version.stdout != udm_onboot_version )
   block:
     - name: onboot - download package
-      raw: curl -L "{{ unifi_onboot_download_uri }}" -o "{{ unifi_mount_path }}/unifi-os/udm-boot-{{ udm_onboot_version }}.deb"
+      raw: curl -L "{{ udm_onboot_download_uri }}" -o "{{ unifi_mount_path }}/unifi-os/udm-boot-{{ udm_onboot_version }}.deb"
     - name: onboot - install package
       raw: "{{ unifi_os_cmd }} dpkg -i {{ unifi_os_mount_path }}/udm-boot-{{ udm_onboot_version }}.deb"
 
@@ -26,6 +26,7 @@
     - { file: "files/10-onboot-nodeexporter.sh", enabled: "{{ nodeexporter_enabled | bool }}" }
     - { file: "files/10-onboot-openvpn.sh", enabled: "{{ openvpn_enabled | bool }}"  }
     - { file: "files/10-onboot-zerotier.sh", enabled: "{{ zerotier_enabled | bool }}" }
+    - { file: "files/10-onboot-cloudflare-ddns.sh", enabled: "{{ cloudflare_enabled | bool }}" }
   shell:
     cmd: "[ '{{ item.enabled }}' = 'True' ] \
             && scp {{ role_path }}/{{ item.file }} {{ inventory_hostname }}:{{ unifi_onboot_directory }}/ \
@@ -33,3 +34,12 @@
 
 - name: onboot - enable executable flag on configurations
   raw: chmod +x {{ unifi_onboot_directory }}/*.sh
+
+- name: deploy cloudflare configuration
+  when: cloudflare_enabled
+  tags:
+    - cloudflare
+  template:
+    src: cloudflare_config.json.j2
+    dest: /mnt/data/cloudflare-ddns/config.json
+    mode: 0644
