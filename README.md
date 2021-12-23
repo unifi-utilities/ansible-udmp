@@ -23,6 +23,24 @@ With this playbook:
       certificate_key: <path-to-certificate-key.pem>
 ```
 
+## UDM Kernel Tools
+
+On default the [UDM Kernel tools](https://github.com/fabianishere/udm-kernel-tools) get not installed. When you enable the variable ```install_kernel_tools``` the tools and the latest kernel get installed. On default also the auto boot into the custom kernel is enabled. This can be switched off by ```udm_kernel_tools_autoboot```.
+
+At the moment it is not supported to install an older kernel. If you have already installed an older kernel, you can switch to this kernel again by setting ```udm_kernel_tools_kernel_version``` manually to a version that is available. The role verifies that this actual version exists before applying the change and booting into this previous kernel.
+
+Please read more about the kernel switch at [UDM Kernel tools](https://github.com/fabianishere/udm-kernel-tools) before giving it a try!
+
+```yaml
+---
+- name: udmp setup
+  hosts: unifi-udmp-gateway
+  gather_facts: false
+  roles:
+    - role: mabunixda.ansible_udmp
+      install_kernel_tools: true
+```
+
 ## You can configure following services:
 
 Except the nodeexporter all services require configuration tasks after deploying the services. This configuration tasks must be done manually or by other roles/plays.

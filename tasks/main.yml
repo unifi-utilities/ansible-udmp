@@ -6,3 +6,7 @@
 
 - name: deploy onboot
   include_tasks: onboot.yml
+
+- name: deploy udm-kernel-tools
+  when: install_kernel_tools
+  include_tasks: kernel-tools.yml
