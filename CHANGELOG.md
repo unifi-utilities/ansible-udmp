@@ -1,3 +1,17 @@
+<a name="v1.1.0"></a>
+# [v1.1.0](https://github.com/mabunixda/ansible-udmp/releases/tag/v1.1.0) - 23 Dec 2021
+
+## 1.1.0 (2021-12-23)
+
+#### Feature
+
+* adding udm kernel tools deployment (#8) (a8443959)
+
+
+
+[Changes][v1.1.0]
+
+
 <a name="v1.0.4"></a>
 # [v1.0.4](https://github.com/mabunixda/ansible-udmp/releases/tag/v1.0.4) - 22 Dec 2021
 
@@ -77,6 +91,7 @@
 [Changes][v1.0.0]
 
 
+[v1.1.0]: https://github.com/mabunixda/ansible-udmp/compare/v1.0.4...v1.1.0
 [v1.0.4]: https://github.com/mabunixda/ansible-udmp/compare/v1.0.3...v1.0.4
 [v1.0.3]: https://github.com/mabunixda/ansible-udmp/compare/v1.0.2...v1.0.3
 [v1.0.2]: https://github.com/mabunixda/ansible-udmp/compare/v1.0.1...v1.0.2
