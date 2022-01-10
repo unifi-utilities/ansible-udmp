@@ -64,3 +64,21 @@ Openvpn Service to connect the UDM(Pro) to a certain OpenVPN tunnel.
 ### zerotier_enabled
 
 Launches a zerotier container on the UDM(Pro) and connects to a certain zerotier network
+
+### force_external_dns
+
+Enables iptables rules to force dns queries redirected to a certain external dns server. This server can be defined by *udmp_external_dns_server_ipv4* and/or *udmp_external_dns_server_ipv6*. But to enable this setup there must be set also on which devices this setup should be established. This is related to the bridge names on the UDM(P). The default is *br0*, the naming convention is here br<VLAN-ID> ( e.g. br20 for vlan 20 ). The configuration must be defined as this sample by *udmp_external_dns_devices*:
+
+```yaml
+---
+- name: udmp setup
+  hosts: unifi-udmp-gateway
+  gather_facts: false
+  roles:
+    - role: mabunixda.ansible_udmp
+      force_external_dns: yes
+      udmp_external_dns_server_ipv4: "192.168.99.100" # e.g. pihole
+      udmp_external_dns_devices:
+        - br10 # vlan 10
+        - br20 # vlan 20
+```

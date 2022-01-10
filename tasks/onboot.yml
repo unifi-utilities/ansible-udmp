@@ -32,8 +32,17 @@
             && scp {{ role_path }}/{{ item.file }} {{ inventory_hostname }}:{{ unifi_onboot_directory }}/ \
             || echo 'item disabled: {{ item.file }}'"
 
-- name: onboot - enable executable flag on configurations
+- name: onboot - enasure executable flag is set on scripts
   raw: chmod +x {{ unifi_onboot_directory }}/*.sh
+
+- name: deploy external dns force configuration
+  when: force_external_dns and ( udmp_external_dns_server_ipv4 is defined or udmp_external_dns_server_ipv6 is defined )
+  tags:
+    - external_dns
+  template:
+    src: force-dns.sh.j2
+    dest: "{{ unifi_onboot_directory }}/99-force-dns.sh"
+    mode: 0755
 
 - name: deploy cloudflare configuration
   when: cloudflare_enabled
@@ -43,3 +52,6 @@
     src: cloudflare_config.json.j2
     dest: /mnt/data/cloudflare-ddns/config.json
     mode: 0644
+
+- name: run udm boot service
+  raw: "{{ unifi_os_cmd }} systemctl restart udm-boot"

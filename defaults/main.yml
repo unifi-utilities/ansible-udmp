@@ -7,6 +7,12 @@ openvpn_enabled: no
 zerotier_enabled: no
 cloudflare_enabled: no
 
+force_external_dns: no
+udmp_external_dns_server_ipv4: ""
+udmp_external_dns_server_ipv6: ""
+udmp_external_dns_devices:
+  - br0
+
 unifi_certificate_path: "{{ unifi_mount_path }}/unifi-os/unifi-core/config"
 unifi_os_certificate_path: "{{ unifi_os_mount_path }}/unifi-core/config"
 
