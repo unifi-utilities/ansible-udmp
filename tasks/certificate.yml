@@ -2,13 +2,13 @@
 
 - name: transfer certificate file
   delegate_to: localhost
-  become: no
+  become: false
   command:
     cmd: scp "{{ certificate }}"  {{ inventory_hostname }}:"{{ unifi_certificate_path }}/unifi-core.crt"
 
 - name: transfer certificate key
   delegate_to: localhost
-  become: no
+  become: false
   command:
     cmd: scp "{{ certificate_key }}" {{ inventory_hostname }}:{{ unifi_certificate_path }}/unifi-core.key
 

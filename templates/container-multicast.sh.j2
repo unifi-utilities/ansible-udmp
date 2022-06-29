@@ -1,0 +1,19 @@
+#!/usr/bin/env sh
+
+DEBUG=${DEBUG:--d}
+CONTAINER_NAME="mrelay"
+OPTS="--noMDNS"
+INTERFACES="${multicast_interfaces}"
+
+if podman container exists ${CONTAINER_NAME}; then
+  podman start ${CONTAINER_NAME}
+else
+  podman run--name "${CONTAINER_NAME}" \
+            --restart always \
+            --network=host \
+            -e OPTS="${OPTS}" \
+            -e INTERFACES="${INTERFACES}" \
+            $DEBUG \
+            docker.io/scyto/multicast-relay
+fi
+
