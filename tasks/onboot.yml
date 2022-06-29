@@ -18,7 +18,7 @@
 
 - name: onboot - deploy custom configurations
   delegate_to: localhost
-  become: no
+  become: false
   with_items:
     - { file: "files/00-onboot-sshkeys.sh", enabled: yes }
     - { file: "files/05-onboot-container.sh", enabled: yes }
