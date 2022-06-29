@@ -19,7 +19,7 @@ unifi_os_certificate_path: "{{ unifi_os_mount_path }}/unifi-core/config"
 java_certificate_import: "java -jar /usr/lib/unifi/lib/ace.jar import_key_cert"
 
 udm_onboot_version: 1.0.5
-udm_onboot_download_uri: "https://github.com/boostchicken/udm-utilities/releases/download/{{ udm_onboot_version }}/udm-boot_{{ udm_onboot_version }}_all.deb"
+udm_onboot_download_uri: "https://github.com/unifi-utilities/unifios-utilities/releases/download/{{ udm_onboot_version }}/udm-boot_{{ udm_onboot_version }}_all.deb"
 
 install_kernel_tools: no
 udm_kernel_tools_autoboot: yes

@@ -8,7 +8,7 @@ Because the Ubiquiti UDM and Pro have not valid python installation, raw command
 
 With this playbook:
 * your custom SSL certificate is loaded to the UDM (Pro)
-* [udm-utilities](https://github.com/boostchicken/udm-utilities) gets installed
+* [unifios-utilities](https://github.com/unifi-utilities/unifios-utilities) gets installed
 * ssh keys are loaded from the Unifi Controller to the UDM (Pro)
 * node exporter for prometheus scraping gets setup as container via podman
 
