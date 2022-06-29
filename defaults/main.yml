@@ -6,8 +6,11 @@ rsyncd_enabled: no
 openvpn_enabled: no
 zerotier_enabled: no
 cloudflare_enabled: no
-
+multicast_enabled: no
 force_external_dns: no
+
+multicast_interfaces: ""
+
 udmp_external_dns_server_ipv4: ""
 udmp_external_dns_server_ipv6: ""
 udmp_external_dns_devices:
